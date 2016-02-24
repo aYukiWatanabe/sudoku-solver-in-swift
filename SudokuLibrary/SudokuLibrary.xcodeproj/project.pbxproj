@@ -108,6 +108,7 @@
 			buildConfigurationList = 00101E681C7C321D00B8EA35 /* Build configuration list for PBXNativeTarget "SudokuLibrary" */;
 			buildPhases = (
 				00101E4F1C7C321D00B8EA35 /* Sources */,
+				00101E821C7D8F0F00B8EA35 /* ShellScript */,
 				00101E501C7C321D00B8EA35 /* Frameworks */,
 				00101E511C7C321D00B8EA35 /* Headers */,
 				00101E521C7C321D00B8EA35 /* Resources */,
@@ -191,6 +192,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00101E821C7D8F0F00B8EA35 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = swiftlint;
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		00101E4F1C7C321D00B8EA35 /* Sources */ = {

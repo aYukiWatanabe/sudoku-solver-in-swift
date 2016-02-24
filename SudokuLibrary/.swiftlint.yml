@@ -1,0 +1,5 @@
+disabled_rules: operator_whitespace
+variable_name:
+  min_length:
+    warning: 1
+    error: 1

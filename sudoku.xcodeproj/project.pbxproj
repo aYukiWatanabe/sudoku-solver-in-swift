@@ -292,6 +292,7 @@
 				00101E491C7C30EF00B8EA35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

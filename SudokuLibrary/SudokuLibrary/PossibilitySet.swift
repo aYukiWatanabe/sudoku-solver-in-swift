@@ -69,7 +69,7 @@ extension PossibilitySet { // computed properties and queries
     func forEach(@noescape body: Int throws -> Bool) rethrows -> Bool {
         for n: Int in 0..<size {
             if contains(n) {
-                if (!(try! body(n))) {
+                if !(try body(n)) {
                     return false
                 }
             }
