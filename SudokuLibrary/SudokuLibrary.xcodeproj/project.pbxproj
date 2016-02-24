@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		00101E581C7C321D00B8EA35 /* SudokuLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 00101E571C7C321D00B8EA35 /* SudokuLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		00101E5F1C7C321D00B8EA35 /* SudokuLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00101E541C7C321D00B8EA35 /* SudokuLibrary.framework */; };
+		00101E7F1C7C384000B8EA35 /* PossibilitySet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00101E7E1C7C384000B8EA35 /* PossibilitySet.swift */; };
+		00101E811C7C5A2800B8EA35 /* PossibilitySetTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00101E801C7C5A2800B8EA35 /* PossibilitySetTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +29,8 @@
 		00101E591C7C321D00B8EA35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00101E5E1C7C321D00B8EA35 /* SudokuLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SudokuLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00101E651C7C321D00B8EA35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00101E7E1C7C384000B8EA35 /* PossibilitySet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibilitySet.swift; sourceTree = "<group>"; };
+		00101E801C7C5A2800B8EA35 /* PossibilitySetTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibilitySetTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,7 @@
 		00101E561C7C321D00B8EA35 /* SudokuLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				00101E7E1C7C384000B8EA35 /* PossibilitySet.swift */,
 				00101E571C7C321D00B8EA35 /* SudokuLibrary.h */,
 				00101E591C7C321D00B8EA35 /* Info.plist */,
 			);
@@ -78,6 +83,7 @@
 		00101E621C7C321D00B8EA35 /* SudokuLibraryTests */ = {
 			isa = PBXGroup;
 			children = (
+				00101E801C7C5A2800B8EA35 /* PossibilitySetTest.swift */,
 				00101E651C7C321D00B8EA35 /* Info.plist */,
 			);
 			path = SudokuLibraryTests;
@@ -191,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00101E7F1C7C384000B8EA35 /* PossibilitySet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00101E811C7C5A2800B8EA35 /* PossibilitySetTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,11 +309,13 @@
 		00101E691C7C321D00B8EA35 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SudokuLibrary/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -313,17 +323,20 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.access-company.osx.SudokuLibrary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		00101E6A1C7C321D00B8EA35 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SudokuLibrary/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -375,6 +388,7 @@
 				00101E6A1C7C321D00B8EA35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		00101E6B1C7C321D00B8EA35 /* Build configuration list for PBXNativeTarget "SudokuLibraryTests" */ = {
 			isa = XCConfigurationList;
@@ -383,6 +397,7 @@
 				00101E6D1C7C321D00B8EA35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
