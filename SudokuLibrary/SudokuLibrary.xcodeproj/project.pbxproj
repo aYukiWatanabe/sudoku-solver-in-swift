@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		00101E581C7C321D00B8EA35 /* SudokuLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 00101E571C7C321D00B8EA35 /* SudokuLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		00101E5F1C7C321D00B8EA35 /* SudokuLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00101E541C7C321D00B8EA35 /* SudokuLibrary.framework */; };
-		00101E641C7C321D00B8EA35 /* SudokuLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00101E631C7C321D00B8EA35 /* SudokuLibraryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,7 +26,6 @@
 		00101E571C7C321D00B8EA35 /* SudokuLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SudokuLibrary.h; sourceTree = "<group>"; };
 		00101E591C7C321D00B8EA35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00101E5E1C7C321D00B8EA35 /* SudokuLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SudokuLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		00101E631C7C321D00B8EA35 /* SudokuLibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuLibraryTests.swift; sourceTree = "<group>"; };
 		00101E651C7C321D00B8EA35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,7 +78,6 @@
 		00101E621C7C321D00B8EA35 /* SudokuLibraryTests */ = {
 			isa = PBXGroup;
 			children = (
-				00101E631C7C321D00B8EA35 /* SudokuLibraryTests.swift */,
 				00101E651C7C321D00B8EA35 /* Info.plist */,
 			);
 			path = SudokuLibraryTests;
@@ -201,7 +198,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00101E641C7C321D00B8EA35 /* SudokuLibraryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
