@@ -18,7 +18,7 @@ struct PossibilitySet {
     init() {
     }
 
-    init(_ numberBits: Int) {
+    init(numberBits: Int) {
         self.numberBits = numberBits
     }
 
@@ -39,7 +39,7 @@ extension PossibilitySet { // mutators
 extension PossibilitySet { // static constructors
 
     static func full() -> PossibilitySet {
-        return PossibilitySet((1 << size) - 1)
+        return PossibilitySet(numberBits: (1 << size) - 1)
     }
 
 }

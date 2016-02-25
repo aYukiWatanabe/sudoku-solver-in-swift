@@ -14,31 +14,31 @@ class PossibilitySetTest: XCTestCase {
     func testPossibilitySetAdd() {
         var set = PossibilitySet()
         set.add(0)
-        XCTAssertEqual(set, PossibilitySet(0x1))
+        XCTAssertEqual(set, PossibilitySet(numberBits: 0x1))
 
         set.add(2)
-        XCTAssertEqual(set, PossibilitySet(0x5))
+        XCTAssertEqual(set, PossibilitySet(numberBits: 0x5))
 
         set.add(8)
-        XCTAssertEqual(set, PossibilitySet(0x105))
+        XCTAssertEqual(set, PossibilitySet(numberBits: 0x105))
 
         set.add(2) // adding an already-added number again
-        XCTAssertEqual(set, PossibilitySet(0x105))
+        XCTAssertEqual(set, PossibilitySet(numberBits: 0x105))
     }
 
     func testPossibilitySetRemove() {
         var set = PossibilitySet.full()
         set.remove(0)
-        XCTAssertEqual(set, PossibilitySet(0x1FE))
+        XCTAssertEqual(set, PossibilitySet(numberBits: 0x1FE))
 
         set.remove(2)
-        XCTAssertEqual(set, PossibilitySet(0x1FA))
+        XCTAssertEqual(set, PossibilitySet(numberBits: 0x1FA))
 
         set.remove(8)
-        XCTAssertEqual(set, PossibilitySet(0xFA))
+        XCTAssertEqual(set, PossibilitySet(numberBits: 0xFA))
 
         set.remove(2) // removing an already-removed number again
-        XCTAssertEqual(set, PossibilitySet(0xFA))
+        XCTAssertEqual(set, PossibilitySet(numberBits: 0xFA))
     }
 
     func testPossibilitySetFull() {
@@ -66,7 +66,7 @@ class PossibilitySetTest: XCTestCase {
         XCTAssertFalse(emptySet.contains(7))
         XCTAssertFalse(emptySet.contains(8))
 
-        let set = PossibilitySet(0x105)
+        let set = PossibilitySet(numberBits: 0x105)
         XCTAssertTrue(set.contains(0))
         XCTAssertFalse(set.contains(1))
         XCTAssertTrue(set.contains(2))
@@ -105,7 +105,7 @@ class PossibilitySetTest: XCTestCase {
         let emptySet = PossibilitySet()
         XCTAssertTrue(emptySet.isEmpty)
 
-        let nonEmptySet = PossibilitySet(1)
+        let nonEmptySet = PossibilitySet(numberBits: 1)
         XCTAssertFalse(nonEmptySet.isEmpty)
     }
 
@@ -121,11 +121,11 @@ class PossibilitySetTest: XCTestCase {
     }
 
     func testPossibilitySetSum() {
-        XCTAssertEqual(PossibilitySet(0).sum, 0)
-        XCTAssertEqual(PossibilitySet(1).sum, 0)
-        XCTAssertEqual(PossibilitySet(0x4).sum, 2)
-        XCTAssertEqual(PossibilitySet(0x5).sum, 0 + 2)
-        XCTAssertEqual(PossibilitySet(0x1F0).sum, 4 + 5 + 6 + 7 + 8)
+        XCTAssertEqual(PossibilitySet(numberBits: 0).sum, 0)
+        XCTAssertEqual(PossibilitySet(numberBits: 1).sum, 0)
+        XCTAssertEqual(PossibilitySet(numberBits: 0x4).sum, 2)
+        XCTAssertEqual(PossibilitySet(numberBits: 0x5).sum, 0 + 2)
+        XCTAssertEqual(PossibilitySet(numberBits: 0x1F0).sum, 4 + 5 + 6 + 7 + 8)
     }
 
 }
