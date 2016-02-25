@@ -120,4 +120,12 @@ class PossibilitySetTest: XCTestCase {
         XCTAssertFalse(set.isUnique)
     }
 
+    func testPossibilitySetSum() {
+        XCTAssertEqual(PossibilitySet(0).sum, 0)
+        XCTAssertEqual(PossibilitySet(1).sum, 0)
+        XCTAssertEqual(PossibilitySet(0x4).sum, 2)
+        XCTAssertEqual(PossibilitySet(0x5).sum, 0 + 2)
+        XCTAssertEqual(PossibilitySet(0x1F0).sum, 4 + 5 + 6 + 7 + 8)
+    }
+
 }

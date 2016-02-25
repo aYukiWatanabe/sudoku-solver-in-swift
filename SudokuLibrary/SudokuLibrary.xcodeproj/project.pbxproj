@@ -15,6 +15,8 @@
 		00C354D21C7E8EB3003D2941 /* PositionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C354D11C7E8EB3003D2941 /* PositionTest.swift */; };
 		00C354D41C7E939A003D2941 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C354D31C7E939A003D2941 /* Area.swift */; };
 		00C354D61C7E95BF003D2941 /* AreaTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C354D51C7E95BF003D2941 /* AreaTest.swift */; };
+		00C354D81C7EA6B6003D2941 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C354D71C7EA6B6003D2941 /* Board.swift */; };
+		00F528BF1C7ED80400C91FD7 /* BoardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F528BE1C7ED80400C91FD7 /* BoardTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,8 @@
 		00C354D11C7E8EB3003D2941 /* PositionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionTest.swift; sourceTree = "<group>"; };
 		00C354D31C7E939A003D2941 /* Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 		00C354D51C7E95BF003D2941 /* AreaTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaTest.swift; sourceTree = "<group>"; };
+		00C354D71C7EA6B6003D2941 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		00F528BE1C7ED80400C91FD7 /* BoardTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				00C354D31C7E939A003D2941 /* Area.swift */,
+				00C354D71C7EA6B6003D2941 /* Board.swift */,
 				00C354CF1C7E8E1F003D2941 /* Position.swift */,
 				00101E7E1C7C384000B8EA35 /* PossibilitySet.swift */,
 				00101E571C7C321D00B8EA35 /* SudokuLibrary.h */,
@@ -94,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				00C354D51C7E95BF003D2941 /* AreaTest.swift */,
+				00F528BE1C7ED80400C91FD7 /* BoardTest.swift */,
 				00C354D11C7E8EB3003D2941 /* PositionTest.swift */,
 				00101E801C7C5A2800B8EA35 /* PossibilitySetTest.swift */,
 				00101E651C7C321D00B8EA35 /* Info.plist */,
@@ -229,6 +235,7 @@
 			files = (
 				00C354D01C7E8E1F003D2941 /* Position.swift in Sources */,
 				00C354D41C7E939A003D2941 /* Area.swift in Sources */,
+				00C354D81C7EA6B6003D2941 /* Board.swift in Sources */,
 				00101E7F1C7C384000B8EA35 /* PossibilitySet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,6 +246,7 @@
 			files = (
 				00C354D61C7E95BF003D2941 /* AreaTest.swift in Sources */,
 				00C354D21C7E8EB3003D2941 /* PositionTest.swift in Sources */,
+				00F528BF1C7ED80400C91FD7 /* BoardTest.swift in Sources */,
 				00101E811C7C5A2800B8EA35 /* PossibilitySetTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

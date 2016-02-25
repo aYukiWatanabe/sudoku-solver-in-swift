@@ -66,6 +66,18 @@ extension PossibilitySet { // computed properties and queries
         return count == 1
     }
 
+    var sum: Int {
+        var sum = 0, shift = 0, bits = numberBits
+        while bits > 0 {
+            if (bits & 1) != 0 {
+                sum += shift
+            }
+            shift += 1
+            bits >>= 1
+        }
+        return sum
+    }
+
     func forEach(@noescape body: Int throws -> Bool) rethrows -> Bool {
         for n: Int in 0..<size {
             if contains(n) {
