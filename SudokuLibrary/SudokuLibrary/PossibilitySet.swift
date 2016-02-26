@@ -22,6 +22,10 @@ struct PossibilitySet {
         self.numberBits = numberBits
     }
 
+    init(uniqueNumber: Int) {
+        numberBits = 1 << uniqueNumber
+    }
+
 }
 
 extension PossibilitySet { // mutators

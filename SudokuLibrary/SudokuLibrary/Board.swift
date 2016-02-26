@@ -16,7 +16,7 @@ extension Position {
 
 }
 
-public struct Board<Element> {
+public struct Board<Element where Element: Equatable> {
 
     private var elements: [Element]
 
@@ -60,4 +60,11 @@ func numbersFrom(possibilities: Board<PossibilitySet>) -> Board<Int> {
     return possibilities.map { (set: PossibilitySet) -> Int in
         set.isUnique ? set.sum : size
     }
+}
+
+extension Board: Equatable {
+}
+
+public func ==<Element where Element: Equatable>(lhs: Board<Element>, rhs: Board<Element>) -> Bool {
+    return wholeArea.forEach { position in lhs[position] == rhs[position] }
 }
