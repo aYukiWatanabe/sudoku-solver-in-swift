@@ -113,7 +113,7 @@ func repeatNonAssumptionProcess(inout board: Board<PossibilitySet>) {
 }
 
 func iterateSolutionsWithAssumption(
-    board: Board<PossibilitySet>, callback: Board<Int> throws -> ()) rethrows {
+    board: Board<PossibilitySet>, @noescape callback: Board<Int> throws -> ()) rethrows {
 
     let position = findPositionWithLeastPossibilities(board)
 
@@ -126,7 +126,7 @@ func iterateSolutionsWithAssumption(
 }
 
 func iterateSolutions(
-    var board: Board<PossibilitySet>, callback: Board<Int> throws -> ()) rethrows {
+    var board: Board<PossibilitySet>, @noescape callback: Board<Int> throws -> ()) rethrows {
 
     repeatNonAssumptionProcess(&board)
 
@@ -138,4 +138,10 @@ func iterateSolutions(
     case .Unsolved:
         try iterateSolutionsWithAssumption(board, callback: callback)
     }
+}
+
+public func iterateSolutions(
+    board: Board<Int>, @noescape callback: Board<Int> throws -> ()) rethrows {
+
+    try iterateSolutions(possibilitiesFrom(board), callback: callback)
 }

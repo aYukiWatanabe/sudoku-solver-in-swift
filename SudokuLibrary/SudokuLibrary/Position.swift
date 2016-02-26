@@ -8,9 +8,14 @@
 
 import Foundation
 
-struct Position {
+public struct Position {
 
     let i, j: Int
+
+    public init(i: Int, j: Int) {
+        self.i = i
+        self.j = j
+    }
 
     var isValid: Bool {
         return 0 <= i && i < size && 0 <= j && j < size
@@ -29,6 +34,6 @@ struct Position {
 extension Position: Equatable {
 }
 
-func ==(lhs: Position, rhs: Position) -> Bool {
+public func ==(lhs: Position, rhs: Position) -> Bool {
     return lhs.i == rhs.i && lhs.j == rhs.j
 }

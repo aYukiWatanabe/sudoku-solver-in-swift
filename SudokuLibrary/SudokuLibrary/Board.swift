@@ -20,7 +20,7 @@ public struct Board<Element where Element: Equatable> {
 
     private var elements: [Element]
 
-    init(element: Element) {
+    public init(element: Element) {
         elements = [Element](count: size * size, repeatedValue: element)
     }
 
@@ -28,7 +28,7 @@ public struct Board<Element where Element: Equatable> {
         self.elements = elements
     }
 
-    subscript(position: Position) -> Element {
+    public subscript(position: Position) -> Element {
         get {
             return elements[position.index]
         }
