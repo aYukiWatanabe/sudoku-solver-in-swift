@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		00101E441C7C30EF00B8EA35 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00101E431C7C30EF00B8EA35 /* main.swift */; };
 		00101E771C7C328100B8EA35 /* SudokuLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00101E741C7C321D00B8EA35 /* SudokuLibrary.framework */; };
+		0087AA5E1C7FF4C700BBA444 /* SudokuLibrary.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00101E741C7C321D00B8EA35 /* SudokuLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,9 +33,10 @@
 		00101E3E1C7C30EF00B8EA35 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstPath = "";
+			dstSubfolderSpec = 10;
 			files = (
+				0087AA5E1C7FF4C700BBA444 /* SudokuLibrary.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -262,6 +264,7 @@
 		00101E481C7C30EF00B8EA35 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -269,6 +272,7 @@
 		00101E491C7C30EF00B8EA35 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
