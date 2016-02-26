@@ -67,7 +67,11 @@
 				00101E421C7C30EF00B8EA35 /* sudoku */,
 				00101E411C7C30EF00B8EA35 /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 0;
+			wrapsLines = 0;
 		};
 		00101E411C7C30EF00B8EA35 /* Products */ = {
 			isa = PBXGroup;
