@@ -6,8 +6,6 @@
 //  Copyright © 2016 ACCESS. All rights reserved.
 //
 
-import Foundation
-
 enum BoardState {
     case Solved
     case Unsolved

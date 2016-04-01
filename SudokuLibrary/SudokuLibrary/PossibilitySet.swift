@@ -6,8 +6,6 @@
 //  Copyright © 2016 ACCESS. All rights reserved.
 //
 
-import Foundation
-
 public let subsize = 3
 public let size = subsize * subsize
 

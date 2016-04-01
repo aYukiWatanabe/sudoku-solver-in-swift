@@ -6,8 +6,6 @@
 //  Copyright © 2016 ACCESS. All rights reserved.
 //
 
-import Foundation
-
 struct Area {
 
     let topLeft, bottomRight: Position

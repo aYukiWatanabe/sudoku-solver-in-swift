@@ -6,8 +6,6 @@
 //  Copyright © 2016 ACCESS. All rights reserved.
 //
 
-import Foundation
-
 public struct Position {
 
     let i, j: Int
