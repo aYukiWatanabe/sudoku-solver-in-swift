@@ -124,8 +124,9 @@ func iterateSolutionsWithAssumption(
 }
 
 func iterateSolutions(
-    var board: Board<PossibilitySet>, @noescape callback: Board<Int> throws -> ()) rethrows {
+    board: Board<PossibilitySet>, @noescape callback: Board<Int> throws -> ()) rethrows {
 
+    var board = board
     repeatNonAssumptionProcess(&board)
 
     switch classify(board) {
