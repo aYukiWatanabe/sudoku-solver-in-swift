@@ -28,6 +28,28 @@ struct Area {
 
 }
 
+extension Area: Sequence {
+
+    typealias Iterator = AnyIterator<Position>
+
+    func makeIterator() -> AnyIterator<Position> {
+        var position = topLeft
+        return AnyIterator {
+            guard self.contains(position) else {
+                return nil
+            }
+            defer {
+                position = position.right()
+                if !self.contains(position) {
+                    position = Position(i: position.down().i, j: self.topLeft.j)
+                }
+            }
+            return position
+        }
+    }
+
+}
+
 let wholeArea = Area(topLeft: Position(i: 0, j: 0), bottomRight: Position(i: size, j: size))
 
 extension Area { // auxiliary constructors

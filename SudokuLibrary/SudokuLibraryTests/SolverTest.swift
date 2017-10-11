@@ -10,17 +10,10 @@
 import XCTest
 
 func setUnique(_ board: inout Board<PossibilitySet>, position: Position, number: Int) {
-    Area.blockContaining(position).forEach { position2 in
-        board[position2].remove(number)
-        return true
-    }
-    Area.row(position.i).forEach { position2 in
-        board[position2].remove(number)
-        return true
-    }
-    Area.column(position.j).forEach { position2 in
-        board[position2].remove(number)
-        return true
+    for area in [Area.blockContaining(position), Area.row(position.i), Area.column(position.j)] {
+        for position2 in area {
+            board[position2].remove(number)
+        }
     }
     board[position] = PossibilitySet(uniqueNumber: number)
 }
@@ -35,10 +28,9 @@ class SolverTest: XCTestCase {
         let position3 = Position(i: 3, j: 7)
         let number1 = 0, number2 = 3, number3 = 8
 
-        wholeArea.forEach { (position: Position) -> Bool in
+        for position in wholeArea {
             actualBoard[position] = PossibilitySet.full()
             expectedBoard[position] = PossibilitySet.full()
-            return true
         }
         actualBoard[position1] = PossibilitySet(uniqueNumber: number1)
         eliminateImpossibilities(&actualBoard)
@@ -67,29 +59,24 @@ class SolverTest: XCTestCase {
         let position5 = Position(i: 6, j: 5)
         let number1 = 0, number2 = 2, number3 = 8, number4 = 5, number5 = number1
 
-        Area.row(position1.i).forEach { (position: Position) -> Bool in
+        for position in Area.row(position1.i) {
             actualBoard[position].remove(number1)
-            return true
         }
         actualBoard[position1].add(number1)
-        Area.row(position2.i).forEach { (position: Position) -> Bool in
+        for position in Area.row(position2.i) {
             actualBoard[position].remove(number2)
-            return true
         }
         actualBoard[position2].add(number2)
-        Area.column(position3.j).forEach { (position: Position) -> Bool in
+        for position in Area.column(position3.j) {
             actualBoard[position].remove(number3)
-            return true
         }
         actualBoard[position3].add(number3)
-        Area.blockContaining(position4).forEach { (position: Position) -> Bool in
+        for position in Area.blockContaining(position4){
             actualBoard[position].remove(number4)
-            return true
         }
         actualBoard[position4].add(number4)
-        Area.blockContaining(position5).forEach { (position: Position) -> Bool in
+        for position in Area.blockContaining(position5) {
             actualBoard[position].remove(number5)
-            return true
         }
         actualBoard[position5].add(number5)
 

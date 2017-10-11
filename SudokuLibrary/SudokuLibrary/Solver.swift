@@ -15,16 +15,14 @@ enum BoardState {
 func classify(_ board: Board<PossibilitySet>) -> BoardState {
     var state = BoardState.solved
 
-    wholeArea.forEach { (position: Position) -> Bool in
+    for position in wholeArea {
         let set = board[position]
         if set.isEmpty {
-            state = BoardState.insolvable
-            return false
+            return BoardState.insolvable
         }
         if !set.isUnique {
             state = BoardState.unsolved
         }
-        return true
     }
 
     return state
@@ -34,45 +32,27 @@ func findPositionWithLeastPossibilities(_ board: Board<PossibilitySet>) -> Posit
     var positionWithLeastPossibilities = Position(i: 0, j: 0)
     var leastCount = size + 1
 
-    wholeArea.forEach { (position: Position) -> Bool in
+    for position in wholeArea {
         let count = board[position].count
         if 1 < count && count < leastCount {
             leastCount = count
             positionWithLeastPossibilities = position
         }
-        return true
     }
 
     return positionWithLeastPossibilities
 }
 
 func eliminateImpossibilities(_ board: inout Board<PossibilitySet>) {
-    wholeArea.forEach { (position1: Position) -> Bool in
-        guard board[position1].isUnique else {
-            return true
-        }
-
+    for position1 in wholeArea where board[position1].isUnique {
         let number = board[position1].sum
-
-        Area.row(position1.i).forEach { position2 in
-            if position1 != position2 {
+        for area in [Area.row(position1.i),
+                     Area.column(position1.j),
+                     Area.blockContaining(position1)] {
+            for position2 in area where position1 != position2 {
                 board[position2].remove(number)
             }
-            return true
         }
-        Area.column(position1.j).forEach { position2 in
-            if position1 != position2 {
-                board[position2].remove(number)
-            }
-            return true
-        }
-        Area.blockContaining(position1).forEach { position2 in
-            if position1 != position2 {
-                board[position2].remove(number)
-            }
-            return true
-        }
-        return true
     }
 }
 
@@ -84,13 +64,12 @@ func fixUniquePossibilities(_ board: inout Board<PossibilitySet>, area: Area) {
 
     var possibilities = [Possibility](repeating: Possibility(), count: size)
 
-    area.forEach { (position: Position) -> Bool in
+    for position in area {
         board[position].forEach { (number: Int) -> Bool in
             possibilities[number].positionFound = position
             possibilities[number].count += 1
             return true
         }
-        return true
     }
 
     for (number, possibility) in possibilities.enumerated() where possibility.count == 1 {
