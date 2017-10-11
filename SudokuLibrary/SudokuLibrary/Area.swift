@@ -51,9 +51,9 @@ extension Area { // auxiliary constructors
         return Area(topLeft: Position(i: 0, j: j), bottomRight: Position(i: size, j: j + 1))
     }
 
-    static func blockContaining(_ position: Position) -> Area {
+    static func block(containing position: Position) -> Area {
         let topLeft = Position(i: position.i / subsize * subsize, j: position.j / subsize * subsize)
-        let bottomRight = topLeft.down(subsize).right(subsize)
+        let bottomRight = topLeft.down(by: subsize).right(by: subsize)
         return Area(topLeft: topLeft, bottomRight: bottomRight)
     }
 
@@ -63,7 +63,7 @@ let allBlocks = { () -> [Area] in
     var blocks: [Area] = []
     for i in 0 ..< subsize {
         for j in 0 ..< subsize {
-            blocks.append(Area.blockContaining(Position(i: i * subsize, j: j * subsize)))
+            blocks.append(Area.block(containing: Position(i: i * subsize, j: j * subsize)))
         }
     }
     return blocks

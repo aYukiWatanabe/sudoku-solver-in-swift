@@ -43,7 +43,7 @@ public struct Board<Element> where Element: Equatable {
 
 }
 
-func possibilitiesFrom(_ numbers: Board<Int>) -> Board<PossibilitySet> {
+func possibilities(from numbers: Board<Int>) -> Board<PossibilitySet> {
     return numbers.map { (number: Int) -> PossibilitySet in
         if number >= size {
             return PossibilitySet.full()
@@ -54,7 +54,7 @@ func possibilitiesFrom(_ numbers: Board<Int>) -> Board<PossibilitySet> {
     }
 }
 
-func numbersFrom(_ possibilities: Board<PossibilitySet>) -> Board<Int> {
+func numbers(from possibilities: Board<PossibilitySet>) -> Board<Int> {
     return possibilities.map { (set: PossibilitySet) -> Int in
         set.isUnique ? set.sum : size
     }

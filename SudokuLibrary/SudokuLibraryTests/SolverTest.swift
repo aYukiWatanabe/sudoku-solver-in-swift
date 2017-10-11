@@ -10,7 +10,7 @@
 import XCTest
 
 func setUnique(_ board: inout Board<PossibilitySet>, position: Position, number: Int) {
-    for area in [Area.blockContaining(position), Area.row(position.i), Area.column(position.j)] {
+    for area in [Area.block(containing: position), Area.row(position.i), Area.column(position.j)] {
         for position2 in area {
             board[position2].remove(number)
         }
@@ -33,13 +33,13 @@ class SolverTest: XCTestCase {
             expectedBoard[position] = PossibilitySet.full()
         }
         actualBoard[position1] = PossibilitySet(uniqueNumber: number1)
-        eliminateImpossibilities(&actualBoard)
+        eliminateImpossibilities(from: &actualBoard)
         setUnique(&expectedBoard, position: position1, number: number1)
         XCTAssertEqual(actualBoard, expectedBoard)
 
         actualBoard[position2] = PossibilitySet(uniqueNumber: number2)
         actualBoard[position3] = PossibilitySet(uniqueNumber: number3)
-        eliminateImpossibilities(&actualBoard)
+        eliminateImpossibilities(from: &actualBoard)
         setUnique(&expectedBoard, position: position2, number: number2)
         setUnique(&expectedBoard, position: position3, number: number3)
         XCTAssertEqual(actualBoard, expectedBoard)
@@ -49,7 +49,7 @@ class SolverTest: XCTestCase {
         var actualBoard = Board<PossibilitySet>(element: PossibilitySet.full())
         var expectedBoard = actualBoard
 
-        fixUniquePossibilities(&actualBoard)
+        fixUniquePossibilities(in: &actualBoard)
         XCTAssertEqual(actualBoard, expectedBoard)
 
         let position1 = Position(i: 0, j: 0)
@@ -71,17 +71,17 @@ class SolverTest: XCTestCase {
             actualBoard[position].remove(number3)
         }
         actualBoard[position3].add(number3)
-        for position in Area.blockContaining(position4) {
+        for position in Area.block(containing: position4) {
             actualBoard[position].remove(number4)
         }
         actualBoard[position4].add(number4)
-        for position in Area.blockContaining(position5) {
+        for position in Area.block(containing: position5) {
             actualBoard[position].remove(number5)
         }
         actualBoard[position5].add(number5)
 
         expectedBoard = actualBoard
-        fixUniquePossibilities(&actualBoard)
+        fixUniquePossibilities(in: &actualBoard)
         expectedBoard[position1] = PossibilitySet(uniqueNumber: number1)
         expectedBoard[position2] = PossibilitySet(uniqueNumber: number2)
         expectedBoard[position3] = PossibilitySet(uniqueNumber: number3)

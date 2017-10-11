@@ -28,7 +28,7 @@ func classify(_ board: Board<PossibilitySet>) -> BoardState {
     return state
 }
 
-func findPositionWithLeastPossibilities(_ board: Board<PossibilitySet>) -> Position {
+func findPositionWithLeastPossibilities(in board: Board<PossibilitySet>) -> Position {
     var positionWithLeastPossibilities = Position(i: 0, j: 0)
     var leastCount = size + 1
 
@@ -43,12 +43,12 @@ func findPositionWithLeastPossibilities(_ board: Board<PossibilitySet>) -> Posit
     return positionWithLeastPossibilities
 }
 
-func eliminateImpossibilities(_ board: inout Board<PossibilitySet>) {
+func eliminateImpossibilities(from board: inout Board<PossibilitySet>) {
     for position1 in wholeArea where board[position1].isUnique {
         let number = board[position1].sum
         for area in [Area.row(position1.i),
                      Area.column(position1.j),
-                     Area.blockContaining(position1)] {
+                     Area.block(containing: position1)] {
             for position2 in area where position1 != position2 {
                 board[position2].remove(number)
             }
@@ -56,7 +56,7 @@ func eliminateImpossibilities(_ board: inout Board<PossibilitySet>) {
     }
 }
 
-func fixUniquePossibilities(_ board: inout Board<PossibilitySet>, area: Area) {
+func fixUniquePossibilities(in board: inout Board<PossibilitySet>, per area: Area) {
     struct Possibility {
         var positionFound: Position?
         var count = 0
@@ -76,29 +76,29 @@ func fixUniquePossibilities(_ board: inout Board<PossibilitySet>, area: Area) {
     }
 }
 
-func fixUniquePossibilities(_ board: inout Board<PossibilitySet>) {
+func fixUniquePossibilities(in board: inout Board<PossibilitySet>) {
     for n in 0 ..< size {
-        fixUniquePossibilities(&board, area: Area.row(n))
-        fixUniquePossibilities(&board, area: Area.column(n))
+        fixUniquePossibilities(in: &board, per: Area.row(n))
+        fixUniquePossibilities(in: &board, per: Area.column(n))
     }
     for block in allBlocks {
-        fixUniquePossibilities(&board, area: block)
+        fixUniquePossibilities(in: &board, per: block)
     }
 }
 
-func repeatNonAssumptionProcess(_ board: inout Board<PossibilitySet>) {
+func repeatNonAssumptionProcess(on board: inout Board<PossibilitySet>) {
     var oldBoard: Board<PossibilitySet>
     repeat {
         oldBoard = board
-        eliminateImpossibilities(&board)
-        fixUniquePossibilities(&board)
+        eliminateImpossibilities(from: &board)
+        fixUniquePossibilities(in: &board)
     } while oldBoard != board
 }
 
 func iterateSolutionsWithAssumption(
-    _ board: Board<PossibilitySet>, callback: (Board<Int>) throws -> Void) rethrows {
+    in board: Board<PossibilitySet>, callback: (Board<Int>) throws -> Void) rethrows {
 
-    let position = findPositionWithLeastPossibilities(board)
+    let position = findPositionWithLeastPossibilities(in: board)
 
     for number in board[position] {
         var nextBoard = board
@@ -111,20 +111,20 @@ func iterateSolutions(
     _ board: Board<PossibilitySet>, callback: (Board<Int>) throws -> Void) rethrows {
 
     var board = board
-    repeatNonAssumptionProcess(&board)
+    repeatNonAssumptionProcess(on: &board)
 
     switch classify(board) {
     case .solved:
-        try callback(numbersFrom(board))
+        try callback(numbers(from: board))
     case .insolvable:
         break
     case .unsolved:
-        try iterateSolutionsWithAssumption(board, callback: callback)
+        try iterateSolutionsWithAssumption(in: board, callback: callback)
     }
 }
 
 public func iterateSolutions(
     board: Board<Int>, callback: (Board<Int>) throws -> Void) rethrows {
 
-    try iterateSolutions(possibilitiesFrom(board), callback: callback)
+    try iterateSolutions(possibilities(from: board), callback: callback)
 }

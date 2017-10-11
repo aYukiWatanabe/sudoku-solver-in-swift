@@ -32,15 +32,15 @@ class AreaTest: XCTestCase {
     }
 
     func testBlockContainingPosition() {
-        let area30 = Area.blockContaining(Position(i: 3, j: 0))
+        let area30 = Area.block(containing: Position(i: 3, j: 0))
         XCTAssertEqual(area30.topLeft, Position(i: 3, j: 0))
         XCTAssertEqual(area30.bottomRight, Position(i: 6, j: 3))
 
-        let area52 = Area.blockContaining(Position(i: 5, j: 2))
+        let area52 = Area.block(containing: Position(i: 5, j: 2))
         XCTAssertEqual(area52.topLeft, Position(i: 3, j: 0))
         XCTAssertEqual(area52.bottomRight, Position(i: 6, j: 3))
 
-        let area88 = Area.blockContaining(Position(i: 8, j: 8))
+        let area88 = Area.block(containing: Position(i: 8, j: 8))
         XCTAssertEqual(area88.topLeft, Position(i: 6, j: 6))
         XCTAssertEqual(area88.bottomRight, Position(i: 9, j: 9))
     }

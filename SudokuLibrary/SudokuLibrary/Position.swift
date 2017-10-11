@@ -19,11 +19,11 @@ public struct Position {
         return 0 <= i && i < size && 0 <= j && j < size
     }
 
-    func right(_ delta: Int = 1) -> Position {
+    func right(by delta: Int = 1) -> Position {
         return Position(i: i, j: j + delta)
     }
 
-    func down(_ delta: Int = 1) -> Position {
+    func down(by delta: Int = 1) -> Position {
         return Position(i: i + delta, j: j)
     }
 

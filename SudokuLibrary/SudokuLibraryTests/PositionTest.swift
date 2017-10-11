@@ -29,22 +29,22 @@ class PositionTest: XCTestCase {
 
     func testRight() {
         XCTAssertEqual(Position(i: 2, j: 4).right(), Position(i: 2, j: 5))
-        XCTAssertEqual(Position(i: 2, j: 4).right(3), Position(i: 2, j: 7))
-        XCTAssertEqual(Position(i: 2, j: 4).right(5), Position(i: 2, j: 9))
+        XCTAssertEqual(Position(i: 2, j: 4).right(by: 3), Position(i: 2, j: 7))
+        XCTAssertEqual(Position(i: 2, j: 4).right(by: 5), Position(i: 2, j: 9))
 
         XCTAssertEqual(Position(i: 5, j: 2).right(), Position(i: 5, j: 3))
-        XCTAssertEqual(Position(i: 5, j: 2).right(3), Position(i: 5, j: 5))
-        XCTAssertEqual(Position(i: 5, j: 2).right(5), Position(i: 5, j: 7))
+        XCTAssertEqual(Position(i: 5, j: 2).right(by: 3), Position(i: 5, j: 5))
+        XCTAssertEqual(Position(i: 5, j: 2).right(by: 5), Position(i: 5, j: 7))
     }
 
     func testDown() {
         XCTAssertEqual(Position(i: 2, j: 4).down(), Position(i: 3, j: 4))
-        XCTAssertEqual(Position(i: 2, j: 4).down(3), Position(i: 5, j: 4))
-        XCTAssertEqual(Position(i: 2, j: 4).down(7), Position(i: 9, j: 4))
+        XCTAssertEqual(Position(i: 2, j: 4).down(by: 3), Position(i: 5, j: 4))
+        XCTAssertEqual(Position(i: 2, j: 4).down(by: 7), Position(i: 9, j: 4))
 
         XCTAssertEqual(Position(i: 5, j: 2).down(), Position(i: 6, j: 2))
-        XCTAssertEqual(Position(i: 5, j: 2).down(3), Position(i: 8, j: 2))
-        XCTAssertEqual(Position(i: 5, j: 2).down(7), Position(i: 12, j: 2))
+        XCTAssertEqual(Position(i: 5, j: 2).down(by: 3), Position(i: 8, j: 2))
+        XCTAssertEqual(Position(i: 5, j: 2).down(by: 7), Position(i: 12, j: 2))
     }
 
 }

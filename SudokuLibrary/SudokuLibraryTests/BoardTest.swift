@@ -12,31 +12,31 @@ import XCTest
 class BoardTest: XCTestCase {
 
     func testPossibilitiesFrom() {
-        var numbers = Board<Int>(element: size)
-        numbers[Position(i: 0, j: 0)] = 0
-        numbers[Position(i: 1, j: 0)] = 1
-        numbers[Position(i: 0, j: 2)] = 2
-        let possibilities = possibilitiesFrom(numbers)
-        XCTAssertEqual(possibilities[Position(i: 0, j: 0)], PossibilitySet(numberBits: 0x1))
-        XCTAssertEqual(possibilities[Position(i: 1, j: 0)], PossibilitySet(numberBits: 0x2))
-        XCTAssertEqual(possibilities[Position(i: 0, j: 2)], PossibilitySet(numberBits: 0x4))
-        XCTAssertEqual(possibilities[Position(i: 3, j: 3)], PossibilitySet.full())
-        XCTAssertEqual(possibilities[Position(i: 3, j: 4)], PossibilitySet.full())
-        XCTAssertEqual(possibilities[Position(i: 4, j: 4)], PossibilitySet.full())
+        var ns = Board<Int>(element: size)
+        ns[Position(i: 0, j: 0)] = 0
+        ns[Position(i: 1, j: 0)] = 1
+        ns[Position(i: 0, j: 2)] = 2
+        let ps = possibilities(from: ns)
+        XCTAssertEqual(ps[Position(i: 0, j: 0)], PossibilitySet(numberBits: 0x1))
+        XCTAssertEqual(ps[Position(i: 1, j: 0)], PossibilitySet(numberBits: 0x2))
+        XCTAssertEqual(ps[Position(i: 0, j: 2)], PossibilitySet(numberBits: 0x4))
+        XCTAssertEqual(ps[Position(i: 3, j: 3)], PossibilitySet.full())
+        XCTAssertEqual(ps[Position(i: 3, j: 4)], PossibilitySet.full())
+        XCTAssertEqual(ps[Position(i: 4, j: 4)], PossibilitySet.full())
     }
 
     func testNumbersFrom() {
-        var possibilities = Board<PossibilitySet>(element: PossibilitySet())
-        possibilities[Position(i: 0, j: 0)] = PossibilitySet(numberBits: 0x3)
-        possibilities[Position(i: 1, j: 0)] = PossibilitySet(numberBits: 0x2)
-        possibilities[Position(i: 0, j: 2)] = PossibilitySet(numberBits: 0x1)
-        let numbers = numbersFrom(possibilities)
-        XCTAssertEqual(numbers[Position(i: 0, j: 0)], size)
-        XCTAssertEqual(numbers[Position(i: 1, j: 0)], 1)
-        XCTAssertEqual(numbers[Position(i: 0, j: 2)], 0)
-        XCTAssertEqual(numbers[Position(i: 3, j: 5)], size)
-        XCTAssertEqual(numbers[Position(i: 4, j: 5)], size)
-        XCTAssertEqual(numbers[Position(i: 4, j: 6)], size)
+        var ps = Board<PossibilitySet>(element: PossibilitySet())
+        ps[Position(i: 0, j: 0)] = PossibilitySet(numberBits: 0x3)
+        ps[Position(i: 1, j: 0)] = PossibilitySet(numberBits: 0x2)
+        ps[Position(i: 0, j: 2)] = PossibilitySet(numberBits: 0x1)
+        let ns = numbers(from: ps)
+        XCTAssertEqual(ns[Position(i: 0, j: 0)], size)
+        XCTAssertEqual(ns[Position(i: 1, j: 0)], 1)
+        XCTAssertEqual(ns[Position(i: 0, j: 2)], 0)
+        XCTAssertEqual(ns[Position(i: 3, j: 5)], size)
+        XCTAssertEqual(ns[Position(i: 4, j: 5)], size)
+        XCTAssertEqual(ns[Position(i: 4, j: 6)], size)
     }
 
 }
