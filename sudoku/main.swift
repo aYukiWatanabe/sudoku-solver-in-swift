@@ -53,4 +53,4 @@ func print(_ board: Board<Int>) {
 }
 
 let problem = readLinesBoard()
-iterateSolutions(problem, callback: print)
+iterateSolutions(board: problem, callback: print)

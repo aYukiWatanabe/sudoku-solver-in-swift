@@ -53,16 +53,25 @@ func eliminateImpossibilities(_ board: inout Board<PossibilitySet>) {
         }
 
         let number = board[position1].sum
-        let eliminate = { (position2: Position) -> Bool in
+
+        Area.row(position1.i).forEach { position2 in
             if position1 != position2 {
                 board[position2].remove(number)
             }
             return true
         }
-
-        Area.row(position1.i).forEach(eliminate)
-        Area.column(position1.j).forEach(eliminate)
-        Area.blockContaining(position1).forEach(eliminate)
+        Area.column(position1.j).forEach { position2 in
+            if position1 != position2 {
+                board[position2].remove(number)
+            }
+            return true
+        }
+        Area.blockContaining(position1).forEach { position2 in
+            if position1 != position2 {
+                board[position2].remove(number)
+            }
+            return true
+        }
         return true
     }
 }

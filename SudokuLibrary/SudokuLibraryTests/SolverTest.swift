@@ -10,14 +10,18 @@
 import XCTest
 
 func setUnique(_ board: inout Board<PossibilitySet>, position: Position, number: Int) {
-    let eliminate = { (position2: Position) -> Bool in
+    Area.blockContaining(position).forEach { position2 in
         board[position2].remove(number)
         return true
     }
-
-    Area.blockContaining(position).forEach(eliminate)
-    Area.row(position.i).forEach(eliminate)
-    Area.column(position.j).forEach(eliminate)
+    Area.row(position.i).forEach { position2 in
+        board[position2].remove(number)
+        return true
+    }
+    Area.column(position.j).forEach { position2 in
+        board[position2].remove(number)
+        return true
+    }
     board[position] = PossibilitySet(uniqueNumber: number)
 }
 
