@@ -65,10 +65,9 @@ func fixUniquePossibilities(_ board: inout Board<PossibilitySet>, area: Area) {
     var possibilities = [Possibility](repeating: Possibility(), count: size)
 
     for position in area {
-        board[position].forEach { (number: Int) -> Bool in
+        for number in board[position] {
             possibilities[number].positionFound = position
             possibilities[number].count += 1
-            return true
         }
     }
 
@@ -101,11 +100,10 @@ func iterateSolutionsWithAssumption(
 
     let position = findPositionWithLeastPossibilities(board)
 
-    try board[position].forEach { (number: Int) -> Bool in
+    for number in board[position] {
         var nextBoard = board
         nextBoard[position] = PossibilitySet(uniqueNumber: number)
         try iterateSolutions(nextBoard, callback: callback)
-        return true
     }
 }
 

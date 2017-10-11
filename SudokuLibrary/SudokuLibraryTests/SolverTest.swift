@@ -71,7 +71,7 @@ class SolverTest: XCTestCase {
             actualBoard[position].remove(number3)
         }
         actualBoard[position3].add(number3)
-        for position in Area.blockContaining(position4){
+        for position in Area.blockContaining(position4) {
             actualBoard[position].remove(number4)
         }
         actualBoard[position4].add(number4)

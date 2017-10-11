@@ -80,17 +80,6 @@ extension PossibilitySet { // computed properties and queries
         return sum
     }
 
-    func forEach(_ body: (Int) throws -> Bool) rethrows -> Bool {
-        for n: Int in 0..<size {
-            if contains(n) {
-                if !(try body(n)) {
-                    return false
-                }
-            }
-        }
-        return true
-    }
-
 }
 
 extension PossibilitySet: Equatable {
@@ -98,4 +87,26 @@ extension PossibilitySet: Equatable {
 
 func ==(lhs: PossibilitySet, rhs: PossibilitySet) -> Bool {
     return lhs.numberBits == rhs.numberBits
+}
+
+extension PossibilitySet: Sequence {
+
+    typealias Iterator = AnyIterator<Int>
+
+    func makeIterator() -> AnyIterator<Int> {
+        var n = 0
+        return AnyIterator {
+            while !self.contains(n) {
+                guard n < size else {
+                    return nil
+                }
+                n += 1
+            }
+            defer {
+                n += 1
+            }
+            return n
+        }
+    }
+
 }
