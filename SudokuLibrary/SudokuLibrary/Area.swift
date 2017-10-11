@@ -15,17 +15,6 @@ struct Area {
                 topLeft.j <= position.j && position.j < bottomRight.j
     }
 
-    func forEach(_ body: (Position) throws -> Bool) rethrows -> Bool {
-        for i in topLeft.i ..< bottomRight.i {
-            for j in topLeft.j ..< bottomRight.j {
-                if !(try body(Position(i: i, j: j))) {
-                    return false
-                }
-            }
-        }
-        return true
-    }
-
 }
 
 extension Area: Sequence {

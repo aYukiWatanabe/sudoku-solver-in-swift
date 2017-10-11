@@ -16,7 +16,7 @@ extension Position {
 
 public struct Board<Element> where Element: Equatable {
 
-    private var elements: [Element]
+    fileprivate var elements: [Element]
 
     public init(element: Element) {
         elements = [Element](repeating: element, count: size * size)
@@ -64,5 +64,5 @@ extension Board: Equatable {
 }
 
 public func ==<Element>(lhs: Board<Element>, rhs: Board<Element>) -> Bool {
-    return wholeArea.forEach { position in lhs[position] == rhs[position] }
+    return lhs.elements == rhs.elements
 }
