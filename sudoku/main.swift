@@ -12,7 +12,7 @@ import SudokuLibrary
 extension String: Collection {
 }
 
-func number(_ string: String) -> Int {
+func number(_ string: Substring) -> Int {
     guard let value = Int(string) else {
         return size
     }

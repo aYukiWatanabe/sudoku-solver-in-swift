@@ -3,7 +3,7 @@ A simple sudoku solver written in Swift, ported from [magicant/sudoku-solver-in-
 
 ## Usage
 
-1. Open sudoku.xcodeproj in Xcode
+1. Open sudoku.xcodeproj in Xcode 9
 1. Archive "sudoku"
 1. Export the archive from Organizer
 1. Run the "sudoku" binary
