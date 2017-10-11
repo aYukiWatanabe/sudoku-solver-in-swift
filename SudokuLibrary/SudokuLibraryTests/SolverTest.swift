@@ -9,7 +9,7 @@
 @testable import SudokuLibrary
 import XCTest
 
-func setUnique(inout board: Board<PossibilitySet>, position: Position, number: Int) {
+func setUnique(_ board: inout Board<PossibilitySet>, position: Position, number: Int) {
     let eliminate = { (position2: Position) -> Bool in
         board[position2].remove(number)
         return true

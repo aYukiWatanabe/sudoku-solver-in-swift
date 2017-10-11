@@ -8,18 +8,18 @@
 
 extension Position {
 
-    private var index: Int {
+    fileprivate var index: Int {
         return i * size + j
     }
 
 }
 
-public struct Board<Element where Element: Equatable> {
+public struct Board<Element> where Element: Equatable {
 
     private var elements: [Element]
 
     public init(element: Element) {
-        elements = [Element](count: size * size, repeatedValue: element)
+        elements = [Element](repeating: element, count: size * size)
     }
 
     private init(elements: [Element]) {
@@ -35,7 +35,7 @@ public struct Board<Element where Element: Equatable> {
         }
     }
 
-    func map<NewElement>(@noescape transform: Element throws -> NewElement)
+    func map<NewElement>(_ transform: (Element) throws -> NewElement)
         rethrows -> Board<NewElement> {
         let newElements = try elements.map(transform)
         return Board<NewElement>(elements: newElements)
@@ -43,7 +43,7 @@ public struct Board<Element where Element: Equatable> {
 
 }
 
-func possibilitiesFrom(numbers: Board<Int>) -> Board<PossibilitySet> {
+func possibilitiesFrom(_ numbers: Board<Int>) -> Board<PossibilitySet> {
     return numbers.map { (number: Int) -> PossibilitySet in
         if number >= size {
             return PossibilitySet.full()
@@ -54,7 +54,7 @@ func possibilitiesFrom(numbers: Board<Int>) -> Board<PossibilitySet> {
     }
 }
 
-func numbersFrom(possibilities: Board<PossibilitySet>) -> Board<Int> {
+func numbersFrom(_ possibilities: Board<PossibilitySet>) -> Board<Int> {
     return possibilities.map { (set: PossibilitySet) -> Int in
         set.isUnique ? set.sum : size
     }
@@ -63,6 +63,6 @@ func numbersFrom(possibilities: Board<PossibilitySet>) -> Board<Int> {
 extension Board: Equatable {
 }
 
-public func ==<Element where Element: Equatable>(lhs: Board<Element>, rhs: Board<Element>) -> Bool {
+public func ==<Element>(lhs: Board<Element>, rhs: Board<Element>) -> Bool where Element: Equatable {
     return wholeArea.forEach { position in lhs[position] == rhs[position] }
 }

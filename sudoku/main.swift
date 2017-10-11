@@ -9,10 +9,10 @@
 import Foundation
 import SudokuLibrary
 
-extension String: CollectionType {
+extension String: Collection {
 }
 
-func number(string: String) -> Int {
+func number(_ string: String) -> Int {
     guard let value = Int(string) else {
         return size
     }
@@ -31,14 +31,14 @@ func readLinesBoard() -> Board<Int> {
     var board = Board<Int>(element: size)
     for row in 0 ..< size {
         let ints = readLineInts()
-        for (column, number) in ints.enumerate() {
+        for (column, number) in ints.enumerated() {
             board[Position(i: row, j: column)] = number
         }
     }
     return board
 }
 
-func print(board: Board<Int>) {
+func print(_ board: Board<Int>) {
     for i in 0 ..< size {
         for j in 0 ..< size {
             let number = board[Position(i: i, j: j)]

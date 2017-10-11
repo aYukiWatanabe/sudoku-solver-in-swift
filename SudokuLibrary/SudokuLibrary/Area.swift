@@ -10,12 +10,12 @@ struct Area {
 
     let topLeft, bottomRight: Position
 
-    func contains(position: Position) -> Bool {
+    func contains(_ position: Position) -> Bool {
         return topLeft.i <= position.i && position.i < bottomRight.i &&
                 topLeft.j <= position.j && position.j < bottomRight.j
     }
 
-    func forEach(@noescape body: Position throws -> Bool) rethrows -> Bool {
+    func forEach(_ body: (Position) throws -> Bool) rethrows -> Bool {
         for i in topLeft.i ..< bottomRight.i {
             for j in topLeft.j ..< bottomRight.j {
                 if !(try body(Position(i: i, j: j))) {
@@ -32,15 +32,15 @@ let wholeArea = Area(topLeft: Position(i: 0, j: 0), bottomRight: Position(i: siz
 
 extension Area { // auxiliary constructors
 
-    static func row(i: Int) -> Area {
+    static func row(_ i: Int) -> Area {
         return Area(topLeft: Position(i: i, j: 0), bottomRight: Position(i: i + 1, j: size))
     }
 
-    static func column(j: Int) -> Area {
+    static func column(_ j: Int) -> Area {
         return Area(topLeft: Position(i: 0, j: j), bottomRight: Position(i: size, j: j + 1))
     }
 
-    static func blockContaining(position: Position) -> Area {
+    static func blockContaining(_ position: Position) -> Area {
         let topLeft = Position(i: position.i / subsize * subsize, j: position.j / subsize * subsize)
         let bottomRight = topLeft.down(subsize).right(subsize)
         return Area(topLeft: topLeft, bottomRight: bottomRight)

@@ -11,7 +11,7 @@ public let size = subsize * subsize
 
 struct PossibilitySet {
 
-    private var numberBits: Int = 0
+    fileprivate var numberBits: Int = 0
 
     init() {
     }
@@ -28,11 +28,11 @@ struct PossibilitySet {
 
 extension PossibilitySet { // mutators
 
-    mutating func add(n: Int) {
+    mutating func add(_ n: Int) {
         numberBits |= 1 << n
     }
 
-    mutating func remove(n: Int) {
+    mutating func remove(_ n: Int) {
         numberBits &= ~(1 << n)
     }
 
@@ -48,7 +48,7 @@ extension PossibilitySet { // static constructors
 
 extension PossibilitySet { // computed properties and queries
 
-    func contains(n: Int) -> Bool {
+    func contains(_ n: Int) -> Bool {
         return (numberBits & (1 << n)) != 0
     }
 
@@ -80,7 +80,7 @@ extension PossibilitySet { // computed properties and queries
         return sum
     }
 
-    func forEach(@noescape body: Int throws -> Bool) rethrows -> Bool {
+    func forEach(_ body: (Int) throws -> Bool) rethrows -> Bool {
         for n: Int in 0..<size {
             if contains(n) {
                 if !(try body(n)) {
