@@ -12,7 +12,7 @@ import XCTest
 class AreaTest: XCTestCase {
 
     func testContains() {
-        let area = Area(topLeft: Position(i: 1, j: 3), bottomRight: Position(i: 6, j: 8))
+        let area = Area(rows: 1..<6, columns: 3..<8)
         XCTAssertFalse(area.contains(Position(i: 0, j: 2)))
         XCTAssertFalse(area.contains(Position(i: 1, j: 2)))
         XCTAssertFalse(area.contains(Position(i: 0, j: 3)))

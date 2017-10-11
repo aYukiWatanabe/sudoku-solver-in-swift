@@ -8,11 +8,17 @@
 
 struct Area {
 
-    let topLeft, bottomRight: Position
+    let rows, columns: CountableRange<Int>
 
     func contains(_ position: Position) -> Bool {
-        return topLeft.i <= position.i && position.i < bottomRight.i &&
-                topLeft.j <= position.j && position.j < bottomRight.j
+        return rows.contains(position.i) && columns.contains(position.j)
+    }
+
+    var topLeft: Position {
+        return Position(i: rows.lowerBound, j: columns.lowerBound)
+    }
+    var bottomRight: Position {
+        return Position(i: rows.upperBound, j: columns.upperBound)
     }
 
 }
@@ -30,7 +36,7 @@ extension Area: Sequence {
             defer {
                 position = position.right()
                 if !self.contains(position) {
-                    position = Position(i: position.down().i, j: self.topLeft.j)
+                    position = Position(i: position.i + 1, j: self.columns.lowerBound)
                 }
             }
             return position
@@ -39,22 +45,23 @@ extension Area: Sequence {
 
 }
 
-let wholeArea = Area(topLeft: Position(i: 0, j: 0), bottomRight: Position(i: size, j: size))
+let wholeArea = Area(rows: 0..<size, columns: 0..<size)
 
 extension Area { // auxiliary constructors
 
     static func row(_ i: Int) -> Area {
-        return Area(topLeft: Position(i: i, j: 0), bottomRight: Position(i: i + 1, j: size))
+        return Area(rows: i ..< i + 1, columns: 0 ..< size)
     }
 
     static func column(_ j: Int) -> Area {
-        return Area(topLeft: Position(i: 0, j: j), bottomRight: Position(i: size, j: j + 1))
+        return Area(rows: 0 ..< size, columns: j ..< j + 1)
     }
 
     static func block(containing position: Position) -> Area {
-        let topLeft = Position(i: position.i / subsize * subsize, j: position.j / subsize * subsize)
-        let bottomRight = topLeft.down(by: subsize).right(by: subsize)
-        return Area(topLeft: topLeft, bottomRight: bottomRight)
+        let topLeft = Position(i: position.i / subsize * subsize,
+                               j: position.j / subsize * subsize)
+        return Area(rows: topLeft.i ..< topLeft.i + subsize,
+                    columns: topLeft.j ..< topLeft.j + subsize)
     }
 
 }
