@@ -93,10 +93,8 @@ func fixUniquePossibilities(_ board: inout Board<PossibilitySet>, area: Area) {
         return true
     }
 
-    for (number, possibility) in possibilities.enumerated() {
-        if possibility.count == 1 {
-            board[possibility.positionFound!] = PossibilitySet(uniqueNumber: number)
-        }
+    for (number, possibility) in possibilities.enumerated() where possibility.count == 1 {
+        board[possibility.positionFound!] = PossibilitySet(uniqueNumber: number)
     }
 }
 
@@ -120,7 +118,7 @@ func repeatNonAssumptionProcess(_ board: inout Board<PossibilitySet>) {
 }
 
 func iterateSolutionsWithAssumption(
-    _ board: Board<PossibilitySet>, callback: (Board<Int>) throws -> ()) rethrows {
+    _ board: Board<PossibilitySet>, callback: (Board<Int>) throws -> Void) rethrows {
 
     let position = findPositionWithLeastPossibilities(board)
 
@@ -133,7 +131,7 @@ func iterateSolutionsWithAssumption(
 }
 
 func iterateSolutions(
-    _ board: Board<PossibilitySet>, callback: (Board<Int>) throws -> ()) rethrows {
+    _ board: Board<PossibilitySet>, callback: (Board<Int>) throws -> Void) rethrows {
 
     var board = board
     repeatNonAssumptionProcess(&board)
@@ -149,7 +147,7 @@ func iterateSolutions(
 }
 
 public func iterateSolutions(
-    board: Board<Int>, callback: (Board<Int>) throws -> ()) rethrows {
+    board: Board<Int>, callback: (Board<Int>) throws -> Void) rethrows {
 
     try iterateSolutions(possibilitiesFrom(board), callback: callback)
 }

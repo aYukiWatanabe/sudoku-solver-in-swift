@@ -63,6 +63,6 @@ func numbersFrom(_ possibilities: Board<PossibilitySet>) -> Board<Int> {
 extension Board: Equatable {
 }
 
-public func ==<Element>(lhs: Board<Element>, rhs: Board<Element>) -> Bool where Element: Equatable {
+public func ==<Element>(lhs: Board<Element>, rhs: Board<Element>) -> Bool {
     return wholeArea.forEach { position in lhs[position] == rhs[position] }
 }
